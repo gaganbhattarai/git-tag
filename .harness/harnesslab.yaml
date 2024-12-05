@@ -39,8 +39,8 @@ pipeline:
                   failureStrategies:
                     - onFailure:
                         errors:
-                          - AllErrors
+                          - Timeout
                         action:
                           type: Ignore
                   when:
-                    stageStatus: All
+                    stageStatus: Success
