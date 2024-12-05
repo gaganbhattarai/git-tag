@@ -27,20 +27,10 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: sem_ver
-                  identifier: sem_ver
+                  name: Run_1
+                  identifier: Run_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: ubuntu:latest
-                    shell: Bash
+                    shell: Sh
                     command: |-
-                      chmod a+x versioning.sh
-                      ./versioning.sh
-                  failureStrategies:
-                    - onFailure:
-                        errors:
-                          - Timeout
-                        action:
-                          type: Ignore
-                  when:
-                    stageStatus: Success
+                      echo "Hw"
+                      ls -lah
