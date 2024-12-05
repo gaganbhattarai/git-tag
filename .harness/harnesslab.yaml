@@ -1,0 +1,46 @@
+pipeline:
+  name: harness-lab
+  identifier: harnesslab
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: harnessgitconnector
+        build: <+input>
+  stages:
+    - stage:
+        name: semantic-versioning
+        identifier: semanticversioning
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: sem_ver
+                  identifier: sem_ver
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ubuntu:latest
+                    shell: Bash
+                    command: |-
+                      chmod a+x versioning.sh
+                      ./versioning.sh
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: Ignore
+                  when:
+                    stageStatus: All
