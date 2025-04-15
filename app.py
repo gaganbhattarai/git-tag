@@ -1,1 +1,0 @@
-print('Hello, Semantic Versioning')

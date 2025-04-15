@@ -1,0 +1,21 @@
+{
+  "name": "cicd-app-be",
+  "version": "1.0.0",
+  "description": "Backend Application for CICD Testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon index.js"
+  },
+  "author": "Sumedh Bajracharya",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.6.4"
+  }
+}
